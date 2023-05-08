@@ -14,9 +14,8 @@ const inter = Inter({ subsets: ['latin'] });
 export default function Home() {
   const links = [
     { name: 'Stability', href: '/stability' },
-    // { name: 'Internship program', href: '#' },
-    // { name: 'Our values', href: '#' },
-    // { name: 'Meet our leadership', href: '#' },
+    { name: 'Midjourney', href: '/midjourney' },
+    { name: 'DALL·E 2', href: 'dalle2' },
   ];
   const stats = [
     { name: 'Fake life created', value: '12K+' },
