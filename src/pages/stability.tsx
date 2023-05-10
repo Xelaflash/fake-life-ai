@@ -47,6 +47,7 @@ function Stability() {
       response.json().then((data) => {
         setData(data);
         setLoading(false);
+        setPromptValue('');
       });
     });
   };
