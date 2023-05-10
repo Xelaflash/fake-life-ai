@@ -1,15 +1,36 @@
+import { log } from 'console';
 import Image from 'next/image';
 import { useState } from 'react';
 
 function Dalle2() {
-  const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [promptValue, setPromptValue] = useState('');
+  const [data, setData] = useState(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    console.log(promptValue);
+
+    try {
+      const response = await fetch('/api/dalle', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: promptValue,
+          n: 1,
+          size: '512x512',
+        }),
+      });
+      const data = await response.json();
+      setData(data.result[0].url);
+      console.log(data.result[0].url);
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -51,7 +72,7 @@ function Dalle2() {
           <div className="border-2 border-greeny border-dotted h-[512px] w-[512px] ">
             {data && (
               <Image
-                src={``}
+                src={data}
                 width={512}
                 height={512}
                 alt="stability generated image"
