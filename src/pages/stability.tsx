@@ -10,6 +10,7 @@ interface GenerationResponse {
 }
 
 function Stability() {
+  // TODO: refacto to use api routes (prevent key leak)
   const engineId = 'stable-diffusion-v1-5';
   const apiHost = process.env.API_HOST ?? 'https://api.stability.ai';
   const apiKey = process.env.NEXT_PUBLIC_DREAM_STUDIO_KEY;

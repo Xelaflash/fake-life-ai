@@ -22,6 +22,7 @@ export default function Home() {
     { name: 'Followers Generated', value: '300+' },
     { name: 'Happy clients', value: '40M+' },
   ];
+
   return (
     <main className={`min-h-screen ${inter.className}`}>
       <div className="relative isolate min-h-screen overflow-hidden bg-gray-900 py-24 sm:py-32">
@@ -58,9 +59,7 @@ export default function Home() {
 
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Fake Life AI
-            </h2>
+            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Fake Life AI</h2>
             <p className="mt-6 text-lg leading-8 text-gray-300">
               {/* TODO: Ask chatGpt to create a phrase for that */}
               Fake your life on social media by creating images with AI.
@@ -77,12 +76,8 @@ export default function Home() {
             <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.name} className="flex flex-col-reverse">
-                  <dt className="text-base leading-7 text-gray-300">
-                    {stat.name}
-                  </dt>
-                  <dd className="text-3xl font-bold leading-9 tracking-tight text-white">
-                    {stat.value}
-                  </dd>
+                  <dt className="text-base leading-7 text-gray-300">{stat.name}</dt>
+                  <dd className="text-3xl font-bold leading-9 tracking-tight text-white">{stat.value}</dd>
                 </div>
               ))}
             </dl>

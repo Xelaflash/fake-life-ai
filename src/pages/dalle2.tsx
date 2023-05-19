@@ -1,6 +1,7 @@
-import { log } from 'console';
 import Image from 'next/image';
 import { useState } from 'react';
+
+// TODO: add image alteration feature
 
 function Dalle2() {
   const [isLoading, setLoading] = useState(false);
