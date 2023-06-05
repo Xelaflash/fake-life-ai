@@ -20,6 +20,13 @@ module.exports = {
         greeny: '#00F260',
         greenydark: '#11998e',
       },
+      keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
+        },
+      },
     },
   },
   plugins: [],

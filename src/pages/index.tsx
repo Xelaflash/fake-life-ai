@@ -60,10 +60,9 @@ export default function Home() {
           </dl>
         </div>
       </div>
-      <hr className="w-[50%] mx-auto" />
-      {/* <Link href="#quickGenSection"> */}
-      <ArrowDown className="w-14 h-14 mx-auto text-white mt-12 animate-bounce " />
-      {/* </Link> */}
+      <Link href="#quickGenSection">
+        <ArrowDown className="w-14 h-14 mx-auto text-white mt-12 animate-bounce " />
+      </Link>
 
       <QuickGenerate />
     </>

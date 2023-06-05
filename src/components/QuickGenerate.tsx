@@ -1,9 +1,12 @@
 import { Kanit } from 'next/font/google';
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import Image from 'next/image';
+import Loading from './Loading';
+import { log } from 'console';
 
 const kanit = Kanit({
-  weight: '600',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
   subsets: ['latin'],
 
   display: 'swap',
@@ -17,6 +20,7 @@ export default function QuickGenerate() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch('/api/stability', {
         method: 'POST',
@@ -48,6 +52,30 @@ export default function QuickGenerate() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleDownload = async () => {
+    // TODO: Not working for Dalle images due to cors policy
+    const base64Image = stabilityImage;
+    const byteCharacters = window.atob(base64Image as string);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: 'image/jpeg' });
+
+    const url = window.URL.createObjectURL(blob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = 'fake_my_life_' + Date.now() + '.jpeg';
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+
+    // Clean up
+    document.body.removeChild(downloadLink);
+    window.URL.revokeObjectURL(url);
   };
 
   return (
@@ -92,24 +120,58 @@ export default function QuickGenerate() {
       </form>
       {/* image section */}
       <div className="flex items-center justify-center mb-8 gap-4">
-        {stabilityImage && (
-          <Image
-            src={`data:image/jpeg;base64,${stabilityImage}`}
-            width={512}
-            height={512}
-            alt="stability generated image"
-            className="rounded-xl shadow shadow-pinky"
-          />
-        )}
-        {dalleImage && (
-          <Image
-            src={dalleImage}
-            width={512}
-            height={512}
-            alt="Dalle generated image"
-            className="rounded-xl shadow shadow-greeny"
-          />
-        )}
+        <div className="border-2 border-pinky border-dotted h-[512px] w-[512px] flex items-center">
+          {stabilityImage ? (
+            <Image
+              src={`data:image/jpeg;base64,${stabilityImage}`}
+              width={512}
+              height={512}
+              alt="stability generated image"
+              className="rounded-xl shadow shadow-pinky"
+              onClick={handleDownload}
+            />
+          ) : !isLoading ? (
+            <div className="w-fit text-left m-auto">
+              <p className="text-bold my-4 text-6xl text-center">🤖</p>
+              <p
+                className={`${kanit.className} text-semibold italic mt-4 text-2xl`}
+              >
+                Robot is sleeping...
+              </p>
+              <aside className={`${kanit.className} text-sm italic`}>
+                or maybe plotting to kill humanity but we can&apos;t be sure.
+              </aside>
+            </div>
+          ) : (
+            <Loading color="pinky" />
+          )}
+        </div>
+        <div className="border-2 border-greeny border-dotted h-[512px] w-[512px] flex items-center">
+          {dalleImage ? (
+            <Image
+              src={dalleImage}
+              width={512}
+              height={512}
+              alt="Dalle generated image"
+              className="rounded-xl shadow shadow-greeny"
+              onClick={handleDownload}
+            />
+          ) : !isLoading ? (
+            <div className="w-fit text-left m-auto">
+              <p className="text-bold my-4 text-6xl text-center">🤖</p>
+              <p
+                className={`${kanit.className} text-semibold italic mt-4 text-2xl`}
+              >
+                Robot is sleeping...
+              </p>
+              <aside className={`${kanit.className} text-sm italic`}>
+                or maybe plotting to kill humanity but we can&apos;t be sure.
+              </aside>
+            </div>
+          ) : (
+            <Loading color="greeny" />
+          )}
+        </div>
       </div>
     </section>
   );

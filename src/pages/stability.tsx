@@ -73,7 +73,7 @@ function Stability() {
           </div>
         </form>
         <div className="flex flex-col items-center justify-center">
-          <div className="border-2 border-pinky border-dotted h-[512px] w-[512px] ">
+          <div className="border-2 border-pinky border-dotted h-[512px] w-[512px]">
             {data && (
               <Image
                 src={`data:image/jpeg;base64,${data.artifacts[0].base64}`}
