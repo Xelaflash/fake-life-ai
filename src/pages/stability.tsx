@@ -10,47 +10,31 @@ interface GenerationResponse {
 }
 
 function Stability() {
-  // TODO: refacto to use api routes (prevent key leak)
-  const engineId = 'stable-diffusion-v1-5';
-  const apiHost = process.env.API_HOST ?? 'https://api.stability.ai';
-  const apiKey = process.env.NEXT_PUBLIC_DREAM_STUDIO_KEY;
-
   const [data, setData] = useState<GenerationResponse | null>(null);
   const [isLoading, setLoading] = useState(false);
   const [promptValue, setPromptValue] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    console.log(promptValue);
-    fetch(`${apiHost}/v1/generation/${engineId}/text-to-image`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        text_prompts: [
-          {
-            text: promptValue,
-          },
-        ],
-        cfg_scale: 7,
-        clip_guidance_preset: 'FAST_BLUE',
-        height: 512,
-        width: 512,
-        samples: 1,
-        steps: 30,
-        style_preset: 'photographic',
-      }),
-    }).then((response) => {
-      response.json().then((data) => {
-        setData(data);
-        setLoading(false);
-        setPromptValue('');
+
+    try {
+      const response = await fetch('/api/stability', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: promptValue,
+        }),
       });
-    });
+      const data = await response.json();
+      setData(data);
+      setLoading(false);
+      setPromptValue('');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

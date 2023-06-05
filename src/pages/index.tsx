@@ -24,12 +24,11 @@ export default function Home() {
       <div className="mx-auto max-w-2xl lg:mx-0 ">
         <h2
           className={`${kanit.className} text-9xl italic tracking-tight text-white `}
-          style={{ textShadow: '4px 4px 6px #b60b74;' }}
+          style={{ textShadow: '4px 4px 6px #b60b74' }}
         >
           Fake Life AI
         </h2>
         <p className="mt-6 text-lg leading-8 text-gray-300">
-          {/* TODO: Ask chatGpt to create a phrase for that */}
           Fake your life on social media by creating images with AI.
         </p>
       </div>
