@@ -38,8 +38,8 @@ function Stability() {
   };
 
   return (
-    <div className="min-h-screen">
-      <h2 className="my-6 text-8xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-br from-pinky to-violine leading-tight pb-16">
+    <div className="px-60">
+      <h2 className="my-6 text-8xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-br from-pinky to-violine leading-tight pb-8">
         Stability
       </h2>
       <div className="content flex items-center justify-around">

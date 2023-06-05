@@ -9,7 +9,7 @@ import { Inter } from 'next/font/google';
 import homeBg from '../../public/images/homeBg.jpg';
 
 // Components
-import Navbar from './Navbar';
+import Navbar from './navbar';
 import Footer from './Footer';
 
 interface LayoutProps {

@@ -16,7 +16,7 @@ const kanit = Kanit({
 export default function Footer() {
   return (
     <footer
-      className=" h-[100px] bg-neutral-950/75 fixed w-full bottom-0 flex justify-between items-center p-5 shadow-[0_2px_8px_4px_rgba(0,0,0,1)]"
+      className=" h-[100px] bg-neutral-950/75  w-full bottom-0 flex justify-between items-center p-5 shadow-[0_2px_8px_4px_rgba(0,0,0,1)]"
       style={{
         background:
           'rgba(0, 0, 0, 0.25) linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0,0, 0, 0.1) 100%) repeat scroll 0% 0%',

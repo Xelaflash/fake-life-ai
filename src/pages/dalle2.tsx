@@ -26,8 +26,6 @@ function Dalle2() {
       });
       const data = await response.json();
       setData(data.result[0].url);
-      console.log(data.result[0].url);
-
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -35,8 +33,8 @@ function Dalle2() {
   };
 
   return (
-    <div className="min-h-screen">
-      <h2 className="my-6 text-8xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-br from-greeny to-greenydark leading-tight pb-16">
+    <div className="px-60">
+      <h2 className="my-6 text-8xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-br from-greeny to-greenydark leading-tight pb-8">
         DALL·E 2
       </h2>
       <div className="content flex items-center justify-around">
