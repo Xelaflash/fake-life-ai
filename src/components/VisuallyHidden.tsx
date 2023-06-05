@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const VisuallyHidden = ({ children, ...delegated }) => {
-  const [forceShow, setForceShow] = React.useState(false);
+interface VisuallyHiddenProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+}
 
-  React.useEffect(() => {
+const VisuallyHidden: React.FC<VisuallyHiddenProps> = ({
+  children,
+  ...delegated
+}) => {
+  const [forceShow, setForceShow] = useState(false);
+
+  useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
-      const handleKeyDown = (ev) => {
+      const handleKeyDown = (ev: KeyboardEvent) => {
         if (ev.key === 'Alt') {
           setForceShow(true);
         }
@@ -26,12 +33,14 @@ const VisuallyHidden = ({ children, ...delegated }) => {
   }, []);
 
   if (forceShow) {
-    return children;
+    return <>{children}</>;
   }
 
-  return <div className='absolute hidden p-0 -m-1 border-0 h-1 w-1' {...delegated}>{children}</div>;
+  return (
+    <div className="absolute hidden p-0 -m-1 border-0 h-1 w-1" {...delegated}>
+      {children}
+    </div>
+  );
 };
-
-
 
 export default VisuallyHidden;
