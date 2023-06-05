@@ -10,7 +10,7 @@ const kanit = Kanit({
 export default function Home() {
   const links = [
     { name: 'Stability', href: '/stability' },
-    { name: 'Midjourney', href: '/midjourney' },
+    // { name: 'Midjourney', href: '/midjourney' },
     { name: 'DALL·E 2', href: 'dalle2' },
   ];
   const stats = [
@@ -20,7 +20,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-[90vh] mx-auto max-w-7xl px-6 py-56 lg:px-8">
+    <div className="mx-auto max-w-7xl px-6 pt-40 ">
       <div className="mx-auto max-w-2xl lg:mx-0 ">
         <h2
           className={`${kanit.className} text-9xl italic tracking-tight text-white `}

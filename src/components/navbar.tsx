@@ -24,7 +24,7 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <nav className="border border-red-500 h-[80px] flex items-center justify-between px-2">
+    <nav className=" h-[90px] flex items-center justify-between px-2  shadow-md shadow-gray-300">
       <Link href="/">
         <Image src={logo} width={80} height={80} alt="Logo of AlexG WebDev" />
       </Link>

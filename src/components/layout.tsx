@@ -9,8 +9,8 @@ import { Inter } from 'next/font/google';
 import homeBg from '../../public/images/homeBg.jpg';
 
 // Components
-import Navbar from './navbar';
-import Footer from './footer';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 interface LayoutProps {
   children: ReactNode;
@@ -54,7 +54,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
         />
       </div>
       <Navbar />
-      <main>{children}</main>
+      <main className="min-h-[79vh]">{children}</main>
       <Footer />
     </div>
   );
