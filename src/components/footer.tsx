@@ -2,7 +2,7 @@ import React from 'react';
 import { Twitter, GitHub, Linkedin, Facebook } from 'react-feather';
 import Image from 'next/image';
 import Link from 'next/link';
-import VisuallyHidden from '@/components/VisuallyHidden';
+import VisuallyHidden from '@/components/visuallyHidden';
 import logo from '../../public/images/logo.png';
 import bmcButton from '../../public/images/bmc-button.png';
 import { Kanit } from 'next/font/google';

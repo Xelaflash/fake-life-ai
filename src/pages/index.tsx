@@ -1,4 +1,4 @@
-import QuickGenerate from '@/components/QuickGenerate';
+import QuickGenerate from '@/components/quickGenerate';
 import { Kanit } from 'next/font/google';
 import Link from 'next/link';
 import { ArrowDown } from 'react-feather';
