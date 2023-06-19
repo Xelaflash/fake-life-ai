@@ -9,8 +9,8 @@ import { Inter } from 'next/font/google';
 import homeBg from '../../public/images/homeBg.jpg';
 
 // Components
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Footer from './Footer';
+import Navbar from './Navbar';
 
 interface LayoutProps {
   children: ReactNode;
