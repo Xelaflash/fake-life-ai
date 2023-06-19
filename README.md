@@ -22,3 +22,4 @@ A simple app to generate image using AI directly from browser.
 
 👤 **[Alex G](https://github.com/Xelaflash)**
 
+© 2023
