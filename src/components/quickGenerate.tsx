@@ -78,7 +78,7 @@ export default function QuickGenerate() {
   };
 
   return (
-    <section id="quickGenSection" className="border border-red-600">
+    <section id="quickGenSection" className="">
       <h2
         className={`text-5xl font-bold ${kanit.className} tracking-tight text-white my-10 text-center`}
       >
@@ -127,7 +127,7 @@ export default function QuickGenerate() {
               height={512}
               alt="stability generated image"
               className="rounded-xl shadow shadow-pinky"
-              onClick={handleDownload}
+              // onClick={handleDownload}
             />
           ) : !isLoading ? (
             <div className="w-fit text-left m-auto">
@@ -153,7 +153,7 @@ export default function QuickGenerate() {
               height={512}
               alt="Dalle generated image"
               className="rounded-xl shadow shadow-greeny"
-              onClick={handleDownload}
+              // onClick={handleDownload}
             />
           ) : !isLoading ? (
             <div className="w-fit text-left m-auto">
